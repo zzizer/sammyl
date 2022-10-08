@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-kuj0x4%7gn5u62)k%la&#de!fk6)k&k$u=l_^aap4w(f7467xx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['onlineshoppersbysamuel.up.railway.app', '127.0.0.1']
 
 
 # Application definition
