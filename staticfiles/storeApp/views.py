@@ -3,6 +3,8 @@ from .models import *
 from django.http import JsonResponse
 import json
 
+
+
 def allproducts(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -71,4 +73,6 @@ def updateItem(request):
         orderItem.delete()
         
     return JsonResponse('Item was Added', safe=False)
-    
+
+def single_product(request):
+    return render(request, 'store/view_single.html')

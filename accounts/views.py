@@ -57,11 +57,6 @@ def register(request):
             user.first_name = fname
             user.last_name = surname
             
-            Customer.objects.create(
-                user=user,
-                email=email
-            )
-            
             template = render_to_string("welcome.html", {'name':fname})
             
             welcome_email = EmailMessage(
@@ -75,7 +70,12 @@ def register(request):
             
             user.save()
             
+            Customer.objects.create(
+                user=user,
+                email=email
+            )            
             messages.success(request, "Account Created successfully...!")
+            
             return redirect("sign_in")
         else:
             messages.error(request, "Passwords don't Match..!")
