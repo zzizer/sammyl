@@ -74,5 +74,5 @@ def updateItem(request):
         
     return JsonResponse('Item was Added', safe=False)
 
-def single_product(request):
+def singleproduct(request):
     return render(request, 'store/view_single.html')
