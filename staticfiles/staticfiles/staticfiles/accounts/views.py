@@ -57,6 +57,7 @@ def register(request):
             user.first_name = fname
             user.last_name = surname
             
+            """
             template = render_to_string("welcome.html", {'name':fname})
             
             welcome_email = EmailMessage(
@@ -67,7 +68,7 @@ def register(request):
             )
             welcome_email.fail_silently = False
             welcome_email.send()
-            
+            """
             user.save()
             
             Customer.objects.create(
