@@ -1,0 +1,93 @@
+{% extends "store/storenav.html" %}
+{% load static %}
+
+{% block content %}
+<hr>
+<hr>
+<div class="container py-5">
+    <a href="{% url 'cart' %}" class="btn btn-secondary ms-5 rounded">Back</a>
+    <div class="row py-5">
+        <div class="col-lg-4 ms-5">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Summary</span>
+                <span class="badge bg-secondary rounded">{{cartItems}} in Cart</span>
+            </h4>
+            <ul class="list-group mb-3">
+                {% for item in items %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                    <h6 class="my-0">{{item.product.name}}</h6>
+                    <small class="text-muted">{{item.product.category}}</small>
+                    </div>
+                    <span class="text-muted">{{item.get_total|floatformat:2}}/=</span>
+                </li>
+               {% endfor %}
+               <hr>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (SHS)</span>
+                    <strong>{{order.get_cart_total|floatformat:2}}/=</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6 ms-5">
+            <h2>Payment</h2>
+            <form action="">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Select One:
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      By Visa
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Cash On delivery
+                    </label>
+                </div>
+                <div class="row py-3">
+                    <div class="col-lg-6">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Name on card</label>
+                          </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Credit Card Number</label>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row py-2">
+                    <div class="col-lg-4">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Expiration</label>
+                          </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">CVV</label>
+                          </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary rounded fs-4">Initiate payment</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4 order-md-2 mb-4">
+    
+</div>
+{% endblock %}

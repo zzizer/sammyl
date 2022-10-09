@@ -1,0 +1,37 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block content %}
+<title>Login</title>
+<div class="mx-auto py-5" style="width:250px;">
+    <div class="row py-5">
+        <div class="col py-5">
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <h4 class="mb-3">Login</h4>
+                {% include "alert.html" %}
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control"name="password" placeholder="Password" required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Login</button>
+                
+                <div class="row ">
+                    <div class="col-6">
+                        <a href="#" class="text-dark text-decoration-none">Forgot Password</a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <a href="{% url 'register_account' %}" class="text-dark text-decoration-none">Not a member</a>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

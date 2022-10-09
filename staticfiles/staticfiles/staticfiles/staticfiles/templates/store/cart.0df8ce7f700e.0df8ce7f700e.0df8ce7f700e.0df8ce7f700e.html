@@ -1,0 +1,74 @@
+{% extends "store/storenav.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .row-image{
+        width: 200px;
+    }
+</style>
+
+<div class="container py-5">
+    <br>    
+    <h1 class="text-center">My Cart</h1>
+    <hr>
+    <a href="{% url 'mystore' %}" class="btn btn-outline-secondary mb-5">Continue Shopping</a>
+    <div class="row">
+        <div class="col-lg-2">
+            <h5 class="text-center">Img</h5>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Product Name</h5>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Category</h5>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Unit Price</h5>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Quantity</h5>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Total Per Product</h5>
+        </div>
+        {% for item in items %}
+        <div class="col-lg-2">
+            <img class="row-image px-5" src="{{item.product.imageURL}}" alt="img" srcset="">
+        </div>
+        <div class="col-lg-2">
+            <p class="text-muted text-center">{{item.product.name}}</p>
+        </div>
+        <div class="col-lg-2">
+            <p class="text-muted text-center">{{item.product.category}}</p>
+        </div>
+        <div class="col-lg-2">
+            <p class="text-muted text-center">{{item.product.unitPrice|floatformat:2}}/=</p>
+        </div>
+        <div class="col-lg-2 text-center">
+            {{item.quantity}}
+            <i data-product={{item.product.id}} data-action="remove" class="bi bi-caret-down-fill arrows update-cart"></i>
+            <i data-product={{item.product.id}} data-action="add"  class="bi bi-caret-up-fill update-cart"></i>
+        </div>
+        <div class="col-lg-2">
+            <p class="text-muted text-center">{{item.get_total|floatformat:2}}/=</p>
+        </div>
+    {% endfor %}
+
+    </div>
+    <hr>
+    <div class="mx-auto" style="width: 500px;">
+        <div class="row">
+            <div class="col-lg-6">
+                <h5>Total Items: {{order.get_cart_items}}</h5>
+            </div>
+            <div class="col-lg-6">
+                <h5 class="ms-5">Overall Total: {{order.get_cart_total|floatformat:2}}/=</h5>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto" style="width: 200px;">
+        <a href="{% url 'checkout' %}" class="btn btn-outline-warning">Proced to Checkout</a>
+    </div>
+</div>
+{% endblock %}

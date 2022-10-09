@@ -1,0 +1,53 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+
+{% block content %}
+<title>Register</title>
+<div class="mx-auto py-5" style="width:295px;">
+    <div class="row py-5">
+        <div class="col">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h4 class="mb-3">SignUp</h4>
+                {% include "alert.html" %}
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" name="username"  placeholder="Username" required>
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control" name="fname"  placeholder="First Name">
+                            <label for="floatingInput">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control" name="surname" placeholder="Surname">
+                            <label for="floatingInput">Surname</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" name="pass1" placeholder="Enter Password" required>
+                    <label for="floatingPassword">Enter password</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" name="pass2" placeholder="Confirm Password">
+                    <label for="floatingPassword">Confirm password</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-3">Register</button> <br>
+
+                <a href="{% url 'sign_in' %}" class="text-dark text-decoration-none">Already member</a>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
